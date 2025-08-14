@@ -54,7 +54,7 @@ const MovieDetails = () => {
         />
       </Helmet>
 
-      <section className="container pt-5 pb-3">
+      <section className="pt-5 pb-3">
         <Button asChild variant="outline" size="sm">
           <Link to="/">
             <ArrowLeft className="mr-2" /> Back
