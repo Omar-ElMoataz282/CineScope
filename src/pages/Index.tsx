@@ -65,7 +65,7 @@ function HomePage() {
 
       <Hero />
 
-      <section className="pt-10 m-auto px-[1rem]" id="browse">
+      <section className="lg:container pt-10 m-auto px-[1rem]" id="browse">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-[2rem]">
           <SearchInput style="md:w-7xl" />
 
