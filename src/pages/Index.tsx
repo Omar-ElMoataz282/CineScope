@@ -106,6 +106,7 @@ function HomePage() {
           page={page}
           itemsPerPage={20}
           total={Math.min(getData.data?.total_results || 0, 1000)}
+          pageLocation={500}
         />
       </section>
     </main>

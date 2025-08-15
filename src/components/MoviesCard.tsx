@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { useDataSWR } from "../lib/SWR";
 import type { Genre, Movies } from "../types/types";
-import fulbackImage from "../../public/poster-page.png";
 
 function MovieCard({ movies }: { movies: Movies }) {
   const apiKEY = import.meta.env.VITE_API_KEY;
@@ -28,7 +27,7 @@ function MovieCard({ movies }: { movies: Movies }) {
           src={
             movies.poster_path
               ? `https://image.tmdb.org/t/p/original/${movies.poster_path}`
-              : fulbackImage
+              : "/public/poster-page.png"
           }
           alt={`${movies.original_title} movie poster`}
           className="h-full w-full object-cover bg-center transition-transform duration-300 group-hover:scale-105"

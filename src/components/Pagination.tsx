@@ -11,7 +11,7 @@ export default function PaginatedItems(props: Pagination) {
   // For Scroll To Top Page + 500
   function topPage() {
     window.scrollTo({
-      top: 500,
+      top: props.pageLocation,
       behavior: "smooth",
     });
   }

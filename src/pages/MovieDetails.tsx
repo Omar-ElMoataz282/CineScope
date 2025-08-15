@@ -6,7 +6,6 @@ import { useDataSWR } from "../lib/SWR";
 import type { Genre } from "../types/types";
 import MovieTrailer from "../components/MovieTrailer";
 import MovieCast from "../components/MovieCast";
-import fulbackImage from "../../public/poster-page.png";
 
 const MovieDetails = () => {
   const apiKEY = import.meta.env.VITE_API_KEY;
@@ -70,7 +69,7 @@ const MovieDetails = () => {
               src={
                 movie.poster_path
                   ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                  : fulbackImage
+                  : "/public/poster-page.png"
               }
               alt={`${movie.original_title} poster`}
               className="w-100 aspect-[1/1] m-auto rounded-lg md:w-full md:aspect-[3/4]"

@@ -39,6 +39,7 @@ function SearchPage() {
         page={page}
         itemsPerPage={20}
         total={getData.data?.total_results || 0}
+        pageLocation={0}
       />
     </section>
   );

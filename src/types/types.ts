@@ -23,6 +23,7 @@ export interface Pagination {
   page: number;
   itemsPerPage: number;
   total: number;
+  pageLocation: number;
 }
 
 export type Genre = {
