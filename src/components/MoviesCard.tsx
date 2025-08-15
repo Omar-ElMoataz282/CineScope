@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { useDataSWR } from "../lib/SWR";
 import type { Genre, Movies } from "../types/types";
+import fulbackImage from "../../public/poster-page.png";
 
 function MovieCard({ movies }: { movies: Movies }) {
   const apiKEY = import.meta.env.VITE_API_KEY;
@@ -24,7 +25,11 @@ function MovieCard({ movies }: { movies: Movies }) {
     >
       <div className="aspect-[2/3] w-full overflow-hidden">
         <img
-          src={`https://image.tmdb.org/t/p/original/${movies.poster_path}`}
+          src={
+            movies.poster_path
+              ? `https://image.tmdb.org/t/p/original/${movies.poster_path}`
+              : fulbackImage
+          }
           alt={`${movies.original_title} movie poster`}
           className="h-full w-full object-cover bg-center transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
@@ -34,10 +39,12 @@ function MovieCard({ movies }: { movies: Movies }) {
       <div className="p-3">
         <div className="flex items-center justify-between">
           <h3 className="font-medium truncate" title={movies.title}>
-            {movies.title}
+            {movies.title || "Title Not Found"}
           </h3>
 
-          <span className="text-xs text-gray-700 ml-2 shrink-0">{year}</span>
+          <span className="text-xs text-gray-700 ml-2 shrink-0">
+            {year || "-"}
+          </span>
         </div>
 
         <div className="mt-1 flex items-center gap-1">
@@ -48,14 +55,20 @@ function MovieCard({ movies }: { movies: Movies }) {
         </div>
 
         <div className="mt-2 flex flex-wrap gap-1">
-          {genres?.map((genre: Genre) => (
-            <span
-              key={genre.id}
-              className="text-xs text-gray-700 border border-gray-300 rounded px-2 py-0.5"
-            >
-              {genre.name}
+          {genres?.length > 0 ? (
+            genres?.map((genre: Genre) => (
+              <span
+                key={genre.id}
+                className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5"
+              >
+                {genre.name}
+              </span>
+            ))
+          ) : (
+            <span className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5">
+              -----
             </span>
-          ))}
+          )}
         </div>
       </div>
     </Link>

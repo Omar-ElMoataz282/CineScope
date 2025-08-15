@@ -6,6 +6,7 @@ import { useDataSWR } from "../lib/SWR";
 import type { Genre } from "../types/types";
 import MovieTrailer from "../components/MovieTrailer";
 import MovieCast from "../components/MovieCast";
+import fulbackImage from "../../public/poster-page.png";
 
 const MovieDetails = () => {
   const apiKEY = import.meta.env.VITE_API_KEY;
@@ -66,7 +67,11 @@ const MovieDetails = () => {
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="col-span-3 md:col-span-1">
             <img
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                  : fulbackImage
+              }
               alt={`${movie.original_title} poster`}
               className="w-100 aspect-[1/1] m-auto rounded-lg md:w-full md:aspect-[3/4]"
             />
@@ -74,8 +79,8 @@ const MovieDetails = () => {
 
           <article className="col-span-3 md:col-span-2">
             <h1 className="font-display text-3xl md:text-4xl font-bold">
-              {movie.title}{" "}
-              <span className="text-gray-500 font-normal">({year})</span>
+              {movie.title || "Title Not Found"}{" "}
+              <span className="text-gray-500 font-normal">({year || "-"})</span>
               <span className="text-red-500 font-normal">
                 {movie.adult && "+18"}
               </span>
@@ -84,29 +89,37 @@ const MovieDetails = () => {
             <div className="mt-2 flex items-center gap-2">
               <Star className="text-rating" />
               <span className="font-medium">
-                {movie.vote_average?.toFixed(1)}
+                {(movie.vote_average || 0.0).toFixed(1)}
               </span>
               <span className="text-muted-foreground">/ 10</span>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {genres?.map((genre: Genre) => (
-                <span
-                  key={genre.id}
-                  className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5"
-                >
-                  {genre.name}
+              {genres?.length > 0 ? (
+                genres?.map((genre: Genre) => (
+                  <span
+                    key={genre.id}
+                    className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5"
+                  >
+                    {genre.name}
+                  </span>
+                ))
+              ) : (
+                <span className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5">
+                  -----
                 </span>
-              ))}
+              )}
             </div>
 
             <p className="mt-6 text-lg text-gray-500 font-semibold">
-              {movie.overview}
+              {movie.overview || "Overview Not Found."}
             </p>
 
             <p className="text-2xl font-bold mt-2">
               Language:{" "}
-              <span className="font-normal">{movie.original_language}</span>
+              <span className="font-normal">
+                {movie.original_language || "Unknown"}
+              </span>
             </p>
 
             <MovieTrailer movieId={Number(id)} />
