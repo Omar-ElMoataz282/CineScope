@@ -12,7 +12,7 @@ function MovieCast({ movieId }: { movieId: number }) {
 
   return (
     <div className="col-span-3 overflow-x-auto scrollbar-special">
-      <div className="flex justify-center gap-4 pt-2 pb-4">
+      <div className="flex gap-4 pt-2 pb-4">
         {data.cast?.slice(0, 10).map((actor: Actors) => (
           <div
             key={actor.cast_id}
