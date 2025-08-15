@@ -55,10 +55,12 @@ const MovieDetails = () => {
       </Helmet>
 
       <section className="pt-5 pb-3">
-        <Button asChild variant="outline" size="sm">
-          <Link to="/">
-            <ArrowLeft className="mr-2" /> Back
-          </Link>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => window.history.back()}
+        >
+          <ArrowLeft className="mr-2" /> Back
         </Button>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
