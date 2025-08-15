@@ -22,7 +22,7 @@ function MovieCast({ movieId }: { movieId: number }) {
               src={
                 actor.profile_path
                   ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                  : "/public/poster-page.png"
+                  : "/poster-page.png"
               }
               alt={actor.name}
               className="w-full rounded-lg"
