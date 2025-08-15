@@ -27,7 +27,7 @@ function MovieCard({ movies }: { movies: Movies }) {
           src={
             movies.poster_path
               ? `https://image.tmdb.org/t/p/original/${movies.poster_path}`
-              : "/public/poster-page.png"
+              : "/poster-page.png"
           }
           alt={`${movies.original_title} movie poster`}
           className="h-full w-full object-cover bg-center transition-transform duration-300 group-hover:scale-105"
