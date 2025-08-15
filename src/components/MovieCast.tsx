@@ -22,14 +22,16 @@ function MovieCast({ movieId }: { movieId: number }) {
               src={
                 actor.profile_path
                   ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                  : "https://via.placeholder.com/200x300?text=No+Image"
+                  : "/public/poster-page.png"
               }
               alt={actor.name}
               className="w-full rounded-lg"
               loading="lazy"
             />
-            <p className="mt-2 font-bold">{actor.name}</p>
-            <p className="text-sm text-gray-500">as {actor.character}</p>
+            <p className="mt-2 font-bold">{actor.name || "Unknown"}</p>
+            <p className="text-sm text-gray-500">
+              as {actor.character || "Unknown"}
+            </p>
           </div>
         ))}
       </div>
