@@ -69,7 +69,7 @@ const MovieDetails = () => {
               src={
                 movie.poster_path
                   ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
-                  : "/public/poster-page.png"
+                  : "/poster-page.png"
               }
               alt={`${movie.original_title} poster`}
               className="w-100 aspect-[1/1] m-auto rounded-lg md:w-full md:aspect-[3/4]"
